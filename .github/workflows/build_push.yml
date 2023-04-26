@@ -1,4 +1,4 @@
-name: Bulld & Push
+name: Build & Push
 
 on:
   push:
