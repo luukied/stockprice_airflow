@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  airflow: # ZxfFNafvyG8XCuv3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+    - airflow-volume:/root/airflow
+    ports:
+      - 8080:8080
+    
+volumes:
+  airflow-volume:
