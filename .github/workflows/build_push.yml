@@ -1,0 +1,24 @@
+name: Bulld & Push
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build_and_push:
+    name: Build image and push to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+    -
+      name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    -
+      name: Build and push deployment container
+      uses: docker/build-push-action@v3.2.0
+      with: 
+        file: Dockerfile
+        push: true
+        tags: luukied/stockprediction:airflow
