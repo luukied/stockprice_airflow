@@ -12,6 +12,7 @@ RUN apt-get update \
 RUN export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt" \
     && pip install --upgrade pip \
     && pip install psycopg2 \
-    && pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
+    && pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}" \
+    && pip install apache-airflow-providers-cncf-kubernetes
 
 CMD airflow standalone
